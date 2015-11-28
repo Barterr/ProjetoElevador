@@ -1,0 +1,4 @@
+main.cpp: In function 'void sleepcp(int)':
+main.cpp:19:31: error: 'usleep' was not declared in this scope
+     usleep(milliseconds * 1000);
+                               ^
