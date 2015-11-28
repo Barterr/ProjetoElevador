@@ -9,12 +9,11 @@ Elevador::Elevador(){
   subindo = 0;
 }
 
-Elevador::Elevador(int id){
+Elevador::Elevador(int id) : indicador(id) {
   andar = 0;
   emMovimento = 0;
   descendo = 0;
   subindo = 0;
-  Indicador indicador(id);
 }
 
 void Elevador::subir(){
