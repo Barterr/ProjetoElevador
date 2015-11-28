@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <chrono>
+#include <thread>
 #include "botao.cpp"
 #include "porta.cpp"
 using namespace std;
