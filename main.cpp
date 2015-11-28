@@ -7,7 +7,7 @@
 using namespace std;
 
 int main (){
-  thread test;
+  thread thread1 (test);
   return 0;
 }
 
