@@ -3,7 +3,7 @@
 #include "indicador.h"
 
 Indicador::Indicador(){
-  elevador = NULL;
+  elevador = -1;
   subindo = 0;
   descendo = 0;
   andarElevador = 0;
@@ -16,23 +16,24 @@ Indicador::Indicador(int id){
   andarElevador = 0;
 }
 
-void setDir(string dir){
-  switch (dir) {
-    case "SUBINDO":
+void Indicador::setDir(std::string dir){
+  if (dir == "SUBINDO") {
     subindo = 1;
     descendo = 0;
-    case "DESCENDO":
+  } else if (dir == "DESCENDO") {
     subindo = 0;
     descendo = 1;
-    case "PARADO":
+  } else if (dir == "PARADO") {
     subindo = 0;
     descendo = 0;
-    default:
+  } else {
     subindo = 0;
     descendo = 0;
   }
+  return;
 }
 
-void setAndar(int andar){
+void Indicador::setAndar(int andar){
   andarElevador = andar;
+  return;
 }

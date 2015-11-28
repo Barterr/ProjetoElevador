@@ -1,6 +1,6 @@
 #ifndef INDICADOR_H
 #define INDICADOR_H
-
+#include <string>
 
 class Indicador {
 public:
@@ -11,7 +11,7 @@ public:
 public:
   Indicador();
   Indicador(int id);
-  void setDir(string dir);
+  void setDir(std::string dir);
   void setAndar(int andar);
 };
 #endif
