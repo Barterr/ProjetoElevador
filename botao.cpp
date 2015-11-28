@@ -1,6 +1,7 @@
 #include "botao.h"
 
 void Botao::Botao (){
+  pressionado = 0;
 }
 
 bool Botao::estaPressionado(){
