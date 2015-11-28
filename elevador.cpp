@@ -2,16 +2,6 @@
 #include <thread>
 #include "elevador.h"
 
-Botao botoes [PISOMAX];
-bool subindo;
-bool descendo;
-bool emMovimento;
-int andar;
-Indicador indicador;
-Porta porta;
-Botao abrePorta;
-Botao fechaPorta;
-
 Elevador::Elevador(){
   andar = 0;
   emMovimento = 0;
@@ -28,25 +18,31 @@ Elevador::Elevador(int id){
 }
 
 void Elevador::subir(){
-  descendo = 0;
-  subindo = 1;
-  emMovimento = 1;
-  std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
-
-  descendo = 0;
-  subindo = 0;
-  emMovimento = 0;
+  if andar != PISOMAX {
+    descendo = 0;
+    subindo = 1;
+    emMovimento = 1;
+    std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
+    andar++;
+    descendo = 0;
+    subindo = 0;
+    emMovimento = 0;
+  }
+  return;
 }
 
 void Elevador::descer(){
-  descendo = 1;
-  subindo = 0;
-  emMovimento = 1;
-  std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
-
-  descendo = 0;
-  subindo = 0;
-  emMovimento = 0;
+  if andar != PISOMAX {
+    descendo = 1;
+    subindo = 0;
+    emMovimento = 1;
+    std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
+    andar--;
+    descendo = 0;
+    subindo = 0;
+    emMovimento = 0;
+  }
+  return;
 }
 
 int Elevador::getAndar(){
@@ -69,10 +65,18 @@ Porta Elevador::getPorta(){
   return porta;
 }
 
+Botao getBotaoAbre(){
+  return abrePorta;
+}
+
+Botao getBotaoFecha(){
+  return fechaPorta;
+}
+
 Indicador Elevador::getIndicador(){
   return indicador;
 }
 
 int Elevador::getBotoesApertados(){
-
+  //a implementar
 }

@@ -24,5 +24,7 @@ public:
   Porta getPorta();
   Indicador getIndicador();
   int getBotoesApertados();
+  Botao getBotaoAbre();
+  Botao getBotaoFecha();
 };
 #endif
