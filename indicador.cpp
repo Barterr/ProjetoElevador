@@ -4,10 +4,19 @@
 using namespace std;
 
 Indicador::Indicador(){
+  elevador = NULL;
   subindo = 0;
   descendo = 0;
   andar = 0;
 }
+
+Indicador::Indicador(int id){
+  elevador = id;
+  subindo = 0;
+  descendo = 0;
+  andar = 0;
+}
+
 void setDir(string dir){
   switch (dir) {
     case "SUBINDO":
@@ -24,6 +33,7 @@ void setDir(string dir){
     descendo = 0;
   }
 }
+
 void setAndar(int andar){
   andarElevador = andar;
 }

@@ -10,6 +10,7 @@ private:
   bool descendo;
 public:
   Indicador();
+  Indicador(int id);
   void setDir(string dir);
   void setAndar(int andar);
 };
