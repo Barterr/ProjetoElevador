@@ -1,18 +1,19 @@
-sdfsdf
+#ifndef ELEVADOR_H
+#define ELEVADOR_H
+#include <iostream>
+using namespace std;
 
-oi tudo bem?
-
-aloooo
-oi
-<<<<<<< HEAD
-gesrgsklejrhgserg
-
-
-teste123456
-=======
-alguma coisaa
-algumasf
-asfhasfh
-
-ULTIMA
->>>>>>> origin/master
+class Elevador {
+	int andarAtual, totalAndares, capacidade, presentes;
+public:
+	void inicializa (int,int);
+	bool entra ();
+	bool sai ();
+	bool sobe ();
+	bool desce ();
+	int getAndarAtual ();
+	int getTotalAndares ();
+	int getCapacidade ();
+	int getPresentes ();
+};
+#endif
