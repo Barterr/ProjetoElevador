@@ -10,6 +10,7 @@ public:
 	Porta();
   bool estaAberta();
   bool getSensor();
+  bool setSensor();
   void abrir();
   void fechar();
 };

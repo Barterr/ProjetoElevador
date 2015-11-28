@@ -1,19 +1,29 @@
+#include <iostream>
+#include <string>
 #include "indicador.h"
+using namespace std;
 
 Indicador::Indicador(){
-
+  subindo = 0;
+  descendo = 0;
+  andar = 0;
 }
-bool Indicador::estaAberta(){
-  return aberta;
+void setDir(string dir){
+  switch (dir) {
+    case "SUBINDO":
+    subindo = 1;
+    descendo = 0;
+    case "DESCENDO":
+    subindo = 0;
+    descendo = 1;
+    case "PARADO":
+    subindo = 0;
+    descendo = 0;
+    default:
+    subindo = 0;
+    descendo = 0;
+  }
 }
-void Indicador::getSensor(){
-  return sensor;
-}
-void Indicador::abrir(){
-  aberta = 1;
-  return;
-}
-void Indicador::fechar(){
-  aberta = 0;
-  return;
+void setAndar(int andar){
+  andarElevador = andar;
 }

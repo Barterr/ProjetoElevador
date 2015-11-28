@@ -1,16 +1,16 @@
+#ifndef INDICADOR_H
+#define INDICADOR_H
 
-#ifndef ELEVADOR_H
-#define ELEVADOR_H
 
-class Porta {
+class Indicador {
 private:
-  bool aberta;
-  bool sensor;
+  int elevador;
+  int andarElevador;
+  bool subindo;
+  bool descendo;
 public:
-	Porta();
-  bool estaAberta();
-  bool getSensor();
-  void abrir();
-  void fechar();
+  Indicador();
+  void setDir(string dir);
+  void setAndar(int andar);
 };
 #endif
