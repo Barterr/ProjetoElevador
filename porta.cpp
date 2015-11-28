@@ -1,13 +1,13 @@
 #include "porta.h"
 
-
-  bool aberta;
-  bool sensor;
 Porta::Porta(){
 
 }
 bool Porta::estaAberta(){
   return aberta;
+}
+void Porta::getSensor(){
+  return sensor;
 }
 void Porta::abrir(){
   aberta = 1;
@@ -16,7 +16,4 @@ void Porta::abrir(){
 void Porta::fechar(){
   aberta = 0;
   return;
-}
-void Porta::getSensor(){
-
 }

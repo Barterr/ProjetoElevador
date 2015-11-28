@@ -1,6 +1,6 @@
 
-#ifndef PORTA_H
-#define PORTA_H
+#ifndef ELEVADOR_H
+#define ELEVADOR_H
 
 class Porta {
 private:
