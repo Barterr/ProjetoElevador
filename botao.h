@@ -1,6 +1,5 @@
 #ifndef BOTAO_H
 #define BOTAO_H
-using namespace std;
 
 class Botao{
 private:
@@ -10,6 +9,5 @@ public:
   bool estaPressionado();
   void apertar();
   void desapertar();
-
 }
 #endif
