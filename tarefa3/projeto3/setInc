@@ -1,0 +1,6 @@
+#! /bin/sh
+export PATH=/usr/EDATools/cadence/INCISIV151/tools.lnx86/bin:$PATH
+export VRST_HOME=/usr/EDATools/cadence/INCISIV151/
+export SPECMAN_PATH=/usr/EDATools/cadence/INCISIV151/
+source $VRST_HOME/env.sh -64bit
+export LD_LIBRARY_PATH=:/usr/lib64:/usr/EDATools/cadence/INCISIV151/tools.lnx86/systemc/lib:$LD_LIBRARY_PATH

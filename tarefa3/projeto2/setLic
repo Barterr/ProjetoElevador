@@ -1,0 +1,3 @@
+export LM_LICENSE_FILE=5280@150.162.10.199
+sudo mount -t nfs 150.162.11.206:/usr/EDATools/ /usr/EDATools
+
