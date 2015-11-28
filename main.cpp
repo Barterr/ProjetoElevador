@@ -4,18 +4,13 @@
 #include <thread>
 #include "botao.cpp"
 #include "porta.cpp"
+#include "indicador.cpp"
 using namespace std;
 
 int main (){
-  thread thread1 (test);
-  return 0;
-}
-
-void test(){
-  Porta porta;
+  Indicador indicador(1);
   cout << "Aberta: " << porta.estaAberta() << endl;
   cout << "Sensor: " << porta.getSensor() << endl;
-  this_thread::sleep_for(chrono::milliseconds(3*1000));
   porta.setSensor(1);
   porta.abrir();
   cout << "Aberta: " << porta.estaAberta() << endl;

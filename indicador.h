@@ -3,7 +3,7 @@
 
 
 class Indicador {
-private:
+public:
   int elevador;
   int andarElevador;
   bool subindo;

@@ -1,10 +1,22 @@
-testthread.cpp: In function 'int main()':
-testthread.cpp:17:3: error: 'thread' is not a member of 'std'
-   std::thread first (foo);     // spawn new thread that calls foo()
-   ^
-testthread.cpp:17:15: error: expected ';' before 'first'
-   std::thread first (foo);     // spawn new thread that calls foo()
+In file included from indicador.cpp:3:0:
+indicador.h:14:15: error: 'string' has not been declared
+   void setDir(string dir);
                ^
-testthread.cpp:21:3: error: 'first' was not declared in this scope
-   first.join();                // pauses until first finishes
-   ^
+indicador.cpp: In constructor 'Indicador::Indicador()':
+indicador.cpp:6:12: warning: converting to non-pointer type 'int' from NULL [-Wconversion-null]
+   elevador = NULL;
+            ^
+indicador.cpp: At global scope:
+indicador.cpp:19:13: error: variable or field 'setDir' declared void
+ void setDir(string dir){
+             ^
+indicador.cpp:19:13: error: 'string' was not declared in this scope
+indicador.cpp:19:13: note: suggested alternative:
+In file included from D:/MinGW/i686-w64-mingw32/include/c++/iosfwd:39:0,
+                 from D:/MinGW/i686-w64-mingw32/include/c++/ios:38,
+                 from D:/MinGW/i686-w64-mingw32/include/c++/ostream:38,
+                 from D:/MinGW/i686-w64-mingw32/include/c++/iostream:39,
+                 from indicador.cpp:1:
+D:/MinGW/i686-w64-mingw32/include/c++/bits/stringfwd.h:62:33: note:   'std::string'
+   typedef basic_string<char>    string;   
+                                 ^
