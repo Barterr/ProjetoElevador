@@ -1,30 +1,21 @@
 
-#ifdef WIN32
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif // win32
-
 #include <iostream>
-#include <unistd.h>
+#include <chrono>
+#include <thread>
 #include "botao.cpp"
 #include "porta.cpp"
-
 using namespace std;
 
-void sleepcp(int milliseconds){
-    #ifdef WIN32
-    Sleep(milliseconds);
-    #else
-    usleep(milliseconds * 1000);
-    #endif // win32
+int main (){
+  thread test (test);
+  return 0;
 }
 
-int main (){
+void test(){
   Porta porta;
   cout << "Aberta: " << porta.estaAberta() << endl;
   cout << "Sensor: " << porta.getSensor() << endl;
-  sleepcp(3*1000);
+  this_thread::sleep_for(chrono::milliseconds(3*1000));
   porta.setSensor(1);
   porta.abrir();
   cout << "Aberta: " << porta.estaAberta() << endl;

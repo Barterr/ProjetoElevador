@@ -1,4 +1,34 @@
-main.cpp: In function 'void sleepcp(int)':
-main.cpp:19:31: error: 'usleep' was not declared in this scope
-     usleep(milliseconds * 1000);
-                               ^
+main.cpp: In function 'int main()':
+main.cpp:9:3: error: 'thread' is not a member of 'std'
+   std::thread test (test);
+   ^
+main.cpp:9:15: error: expected ';' before 'test'
+   std::thread test (test);
+               ^
+main.cpp: In function 'void test()':
+main.cpp:15:3: error: 'cout' was not declared in this scope
+   cout << "Aberta: " << porta.estaAberta() << endl;
+   ^
+main.cpp:15:3: note: suggested alternative:
+In file included from main.cpp:2:0:
+d:\mingw\lib\gcc\mingw32\4.8.1\include\c++\iostream:61:18: note:   'std::cout'
+   extern ostream cout;  /// Linked to standard output
+                  ^
+main.cpp:15:47: error: 'endl' was not declared in this scope
+   cout << "Aberta: " << porta.estaAberta() << endl;
+                                               ^
+main.cpp:15:47: note: suggested alternative:
+In file included from d:\mingw\lib\gcc\mingw32\4.8.1\include\c++\iostream:39:0,
+                 from main.cpp:2:
+d:\mingw\lib\gcc\mingw32\4.8.1\include\c++\ostream:564:5: note:   'std::endl'
+     endl(basic_ostream<_CharT, _Traits>& __os)
+     ^
+main.cpp:17:3: error: 'this_thread' has not been declared
+   this_thread::sleep_for(chrono::milliseconds(3*1000));
+   ^
+main.cpp:17:26: error: 'chrono' has not been declared
+   this_thread::sleep_for(chrono::milliseconds(3*1000));
+                          ^
+main.cpp:28:10: error: return-statement with a value, in function returning 'void' [-fpermissive]
+   return 0;
+          ^
