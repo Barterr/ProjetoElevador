@@ -7,7 +7,7 @@
 using namespace std;
 
 int main (){
-  thread test (test);
+  thread test;
   return 0;
 }
 
@@ -26,5 +26,4 @@ void test(){
   porta.setSensor(0);
   cout << "Aberta: " << porta.estaAberta() << endl;
   cout << "Sensor: " << porta.getSensor() << endl;
-  return 0;
 }
