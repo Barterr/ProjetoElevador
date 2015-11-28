@@ -1,7 +1,7 @@
 #include "andar.h"
 #include <array>
 
-void Andar::Andar(){
+void Andar::Andar() : indicador[0](0) : indicador[1](1){
 
 }
 
