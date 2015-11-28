@@ -9,5 +9,5 @@ public:
   bool estaPressionado();
   void apertar();
   void desapertar();
-}
+};
 #endif

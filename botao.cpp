@@ -1,6 +1,6 @@
 #include "botao.h"
 
-void Botao::Botao (){
+Botao::Botao (){
   pressionado = 0;
 }
 
@@ -9,9 +9,9 @@ bool Botao::estaPressionado(){
 }
 
 void Botao::apertar(){
- pressionado = TRUE;
+ pressionado = 1;
 }
 
 void Botao::desapertar(){
-  pressionado = FALSE;
+  pressionado = 0;
 }
