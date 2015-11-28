@@ -7,7 +7,7 @@ Porta::Porta(){
 bool Porta::estaAberta(){
   return aberta;
 }
-void Porta::getSensor(){
+bool Porta::getSensor(){
   return sensor;
 }
 void Porta::setSensor(bool a){
