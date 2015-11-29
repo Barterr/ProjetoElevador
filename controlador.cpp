@@ -17,7 +17,7 @@ Controlador::Controlador() {
 
 void Controlador::threadControlador() {
   for (int i = 0; i < NUMELEVADORES; i++) {
-    std::thread threadElevador(&elevadores[i].mover);
+    elevadores[i].criarThread();
   }
 
   while (1) {
