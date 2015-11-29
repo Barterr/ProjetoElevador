@@ -13,6 +13,14 @@
 #include "controlador.cpp"
 using namespace std;
 
+void printelevador0() {
+  cout << "Elevador 0" << endl;
+  cout << "Andar: "  controlador.getElevador(0)->getAndar() << endl;
+  cout << "Subindo: "  controlador.getElevador(0)->getDescendo() << endl;
+  cout << "Descendo: "  controlador.getElevador(0)->getSubindo() << endl;
+  cout << "Em Movimento: "  controlador.getElevador(0)->getEmMovimento() << endl;
+}
+
 int main() {
   Controlador controlador;
 
@@ -41,12 +49,4 @@ int main() {
 
   while (1);
   return 0;
-}
-
-void printelevador0() {
-  cout << "Elevador 0" << endl;
-  cout << "Andar: "  controlador.getElevador(0)->getAndar() << endl;
-  cout << "Subindo: "  controlador.getElevador(0)->getDescendo() << endl;
-  cout << "Descendo: "  controlador.getElevador(0)->getSubindo() << endl;
-  cout << "Em Movimento: "  controlador.getElevador(0)->getEmMovimento() << endl;
 }
