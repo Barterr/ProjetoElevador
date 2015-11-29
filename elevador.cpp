@@ -20,15 +20,15 @@ void Elevador::mover() {
   while (1) {
     if (emMovimento) {
       if (subindo) {
-        // std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
         andar++;
       } else
       if (descendo) {
-        // std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
         andar--;
       }
     } else {
-      // std::this_thread::sleep_for(std::chrono::milliseconds(100));
+      std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
   }
 }

@@ -13,49 +13,40 @@
 #include "controlador.cpp"
 using namespace std;
 
-int main (){
-  // Elevador elevador;
-  // Botao botao;
-  // cout << "Botao apertado: " << botao.estaPressionado() << endl;
-  // botao.apertar();
-  // cout << "Botao apertado: " << botao.estaPressionado() << endl;
-  // cout << "Andar: " << elevador.getAndar() << endl;
-  // cout << "Subindo: " << elevador.getSubindo() << endl;
-  // cout << "Descendo: " << elevador.getDescendo() << endl;
-  // cout << "EmMovimento: " << elevador.getEmMovimento() << endl;
-  // cout << "--------------" << endl;
-  // // elevador.botoesPainel[1]->apertar();
-  // // elevador.botoesPainel[3]->apertar();
-  // // Botao asdqwe = elevador.getBotaoPainel(0);
-  // // elevador.getBotaoPainel(0).apertar();
-  // // asdqwe.apertar();
-  // elevador.getBotaoPainel(0)->apertar();
-  // elevador.getBotaoPainel(1)->apertar();
-  // elevador.getBotaoPainel(2)->desapertar();
-  // elevador.getBotaoPainel(3)->apertar();
-  // elevador.getBotaoPainel(4)->apertar();
-  // elevador.getBotaoPainel(9)->apertar();
-  // cout << "botoes apertados: " << bitset<10>(elevador.getBotoesApertados()) << endl;
-  //
-  // // cout << "botoes apertados: " << out << endl;
-  // cout << elevador.getBotaoPainel(0)->estaPressionado() << endl;
-  // cout << elevador.getBotaoPainel(1)->estaPressionado() << endl;
-  // cout << elevador.getBotaoPainel(2)->estaPressionado() << endl;
-  // cout << elevador.getBotaoPainel(3)->estaPressionado() << endl;
-  // cout << elevador.getBotaoPainel(4)->estaPressionado() << endl;
-  // // cout << "Indicador 1 ID: " << andar.getIndicador(1)->elevador << endl;
-  // // cout << "Porta 0 aberta?: " << andar.getPorta(0)->estaAberta() << endl;
-  // // cout << "Porta 1 aberta?: " << andar.getPorta(1)->estaAberta() << endl;
-  // // andar.getPorta(1)->abrir();
-  // // cout << "Porta 0 aberta?: " << andar.getPorta(0)->estaAberta() << endl;
-  // // cout << "Porta 1 aberta?: " << andar.getPorta(1)->estaAberta() << endl;
-  // // andar.getPorta(0)->abrir();
-  // // cout << "Porta 0 aberta?: " << andar.getPorta(0)->estaAberta() << endl;
-  // // cout << "Porta 1 aberta?: " << andar.getPorta(1)->estaAberta() << endl;
-  // // // cout << "Descendo: " << indicador.descendo << endl;
-  // // // cout << "Andar: " << indicador.andarElevador << endl;
-  // string asd;
-  // cin >> asd;
+int main() {
+  Controlador controlador;
 
+  printelevador0();
+
+  controlador.getElevador(0)->getBotaoPainel(5)->apertar();
+
+  this_thread::sleep_for(chrono::milliseconds(500));
+  //usleep(chrono::milliseconds(500));
+  printelevador0();
+  this_thread::sleep_for(chrono::milliseconds(500));
+  //usleep(chrono::milliseconds(500));
+  printelevador0();
+  this_thread::sleep_for(chrono::milliseconds(500));
+  //usleep(chrono::milliseconds(500));
+  printelevador0();
+  this_thread::sleep_for(chrono::milliseconds(500));
+  //usleep(chrono::milliseconds(500));
+  printelevador0();
+  this_thread::sleep_for(chrono::milliseconds(500));
+  //usleep(chrono::milliseconds(500));
+  printelevador0();
+  this_thread::sleep_for(chrono::milliseconds(500));
+  //usleep(chrono::milliseconds(500));
+  printelevador0();
+
+  while (1);
   return 0;
+}
+
+void printelevador0() {
+  cout << "Elevador 0" << endl;
+  cout << "Andar: "  controlador.getElevador(0)->getAndar() << endl;
+  cout << "Subindo: "  controlador.getElevador(0)->getDescendo() << endl;
+  cout << "Descendo: "  controlador.getElevador(0)->getSubindo() << endl;
+  cout << "Em Movimento: "  controlador.getElevador(0)->getEmMovimento() << endl;
 }

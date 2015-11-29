@@ -1,13 +1,34 @@
 #include "controlador.h"
-#include <iostream>
-using namespace std;
 
-Controlador::Controlador() {}
+Controlador::Controlador() {
+  for (int i = 0; i < PISOMAX; i++) {
+    chamadasDescer[i] = 0;
+    chamadasSubir[i]  = 0;
+
+    for (int j = 0; j < NUMELEVADORES; j++) {
+      andaresParar[j][i] = 0;
+    }
+  }
+
+  for (int j = 0; j < NUMELEVADORES; j++) {
+    elevadores[j] = Elevador(j);
+  }
+}
 
 void Controlador::threadControlador() {
-  atualizarChamadas();
-  atualizaArrays();
-  
+  std::thread threadElevadores[NUMELEVADORES];
+
+  for (int i = 0; i < NUMELEVADORES; i++) {
+    std::thread threadElevadores[i](elevadores[i].mover);
+  }
+
+  while (1) {
+    atualizarChamadas();
+    atualizaArrays();
+    atenderChamadas();
+    atualizarMovimentos();
+    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+  }
 }
 
 void Controlador::atualizaArrays() {
@@ -23,8 +44,6 @@ void Controlador::atualizaArrays() {
       botoesApertados[i] >>= 1;
     }
   }
-
-
 }
 
 void Controlador::atenderChamadas() {
@@ -60,6 +79,7 @@ void Controlador::atenderChamadas() {
       }
       andaresParar[responsavel][i] = 1;
     }
+
     if (chamadasDescer[i]) {
       int distancia[NUMELEVADORES];
       int responsavel = -1;
