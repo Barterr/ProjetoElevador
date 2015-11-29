@@ -18,6 +18,11 @@ void foo(Elevador* elevador) {
     elevador->mover();
   }
 }
+void bar(Controlador* controlador) {
+  while(1) {
+    controlador->threadControlador();
+  }
+}
 
 void printelevador0(Elevador* elevador, int i) {
   cout << "Elevador " << i << endl;
@@ -32,7 +37,7 @@ int main() {
   Controlador controlador;
 
   thread first (foo, controlador.getElevador(0));
-  thread contthread (&Controlador::threadControlador,controlador);
+  thread contthread (bar, controlador);
 
   printelevador0(controlador.getElevador(0), 0);
 
