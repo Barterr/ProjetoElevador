@@ -15,7 +15,10 @@ public:
   void threadControlador();
   void atualizaArrays();
   void atualizarChamadas();
-  void acionamentos();
+  void atualizarMovimentos();
+  bool temPendencias(int idElevador);
+  int getUltimoDestino(int idElevador);
+  int getProximoDestino(int idElevador);
   void procedimentosFinais();
 };
 #endif

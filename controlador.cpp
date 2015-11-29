@@ -7,6 +7,7 @@ Controlador::Controlador() {}
 void Controlador::threadControlador() {
   atualizarChamadas();
   atualizaArrays();
+  
 }
 
 void Controlador::atualizaArrays() {
@@ -23,22 +24,97 @@ void Controlador::atualizaArrays() {
     }
   }
 
+
+}
+
+void Controlador::atenderChamadas() {
   for (int i = 0; i < PISOMAX; i++) {
     if (chamadasSubir[i]) {
-      
+      int distancia[NUMELEVADORES];
+      int responsavel = -1;
+
+      // calcula as distancias dos elevadores até as chamadas
+      for (int j = 0; j < NUMELEVADORES; j++) {
+        if (!elevadores[j].getDescendo()) {
+          int ultimoDestino = getUltimoDestino(j);
+          int andarAtual    = elevadores[j].getAndar();
+          distancia[j] = abs(ultimoDestino - andarAtual) + abs(ultimoDestino - i);
+        }
+        else {
+          distancia[j] = -1;
+        }
+      }
+
+      if (distancia[0] != -1) {
+        responsavel = 0;
+      }
+
+      if (NUMELEVADORES > 1) {
+        for (int j = 1; j < NUMELEVADORES; j++) {
+          if (distancia[j] != -1) {
+            if (distancia[j] < distancia[responsavel]) {
+              responsavel = j;
+            }
+          }
+        }
+      }
+      andaresParar[responsavel][i] = 1;
+    }
+    if (chamadasDescer[i]) {
+      int distancia[NUMELEVADORES];
+      int responsavel = -1;
+
+      // calcula as distancias dos elevadores até as chamadas
+      for (int j = 0; j < NUMELEVADORES; j++) {
+        if (!elevadores[j].getSubindo()) {
+          int ultimoDestino = getUltimoDestino(j);
+          int andarAtual    = elevadores[j].getAndar();
+          distancia[j] = abs(ultimoDestino - andarAtual) + abs(ultimoDestino - i);
+        }
+        else {
+          distancia[j] = -1;
+        }
+      }
+
+      if (distancia[0] != -1) {
+        responsavel = 0;
+      }
+
+      if (NUMELEVADORES > 1) {
+        for (int j = 1; j < NUMELEVADORES; j++) {
+          if (distancia[j] != -1) {
+            if (distancia[j] < distancia[responsavel]) {
+              responsavel = j;
+            }
+          }
+        }
+      }
+      andaresParar[responsavel][i] = 1;
     }
   }
-
 }
 
 void Controlador::atualizarChamadas() {
   for (int i = 0; i < PISOMAX; i++) {
     chamadasSubir[i]  = andares[i].getBotaoSubir()->estaPressionado();
     chamadasDescer[i] = andares[i].getBotaoDescer()->estaPressionado();
+
+    if (chamadasSubir[i] || chamadasDescer[i]) {
+      for (int j = 0; j < NUMELEVADORES; j++) {
+        if (elevadores[j].getSubindo()
+            && (andaresParar[j][i] == 1)
+            && (elevadores[j].getAndar() < i)) {
+          chamadasSubir[i] = 0;
+        }
+        else if (elevadores[j].getDescendo()
+                 && (andaresParar[j][i] == 1)
+                 && (elevadores[j].getAndar() > i)) {
+          chamadasDescer[i] = 0;
+        }
+      }
+    }
   }
 }
-
-
 
 void Controlador::atualizarMovimentos() {
   for (int i = 0; i < NUMELEVADORES; i++) {
@@ -94,7 +170,7 @@ int Controlador::getUltimoDestino(int idElevador) {
 
   if (elevadores[idElevador].getDescendo()) {
     for (int i = PISOMAX; i >= 0; i--) {
-      if (andarandaresParar[i]) {
+      if (andaresParar[i]) {
         andarDestino = i;
       }
     }
@@ -102,7 +178,7 @@ int Controlador::getUltimoDestino(int idElevador) {
 
   if (elevadores[idElevador].getSubindo()) {
     for (int i = 0; i < PISOMAX; i++) {
-      if (andarandaresParar[i]) {
+      if (andaresParar[i]) {
         andarDestino = i;
       }
     }
@@ -113,14 +189,14 @@ int Controlador::getUltimoDestino(int idElevador) {
 int Controlador::getProximoDestino(int idElevador) {
   if (elevadores[idElevador].getDescendo()) {
     for (int i = PISOMAX; i >= 0; i--) {
-      if (andarandaresParar[i]) {
+      if (andaresParar[i]) {
         return i;
       }
     }
   }
   else {
     for (int i = 0; i < PISOMAX; i++) {
-      if (andarandaresParar[i]) {
+      if (andaresParar[i]) {
         return i;
       }
     }
