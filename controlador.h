@@ -15,6 +15,7 @@ public:
   void threadControlador();
   void atualizaArrays();
   void atualizarChamadas();
+  void atenderChamadas();
   void atualizarMovimentos();
   bool temPendencias(int idElevador);
   int getUltimoDestino(int idElevador);
