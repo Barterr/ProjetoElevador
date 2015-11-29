@@ -33,9 +33,9 @@ void Elevador::mover() {
   }
 }
 
-void Elevador::criarThread() {
-  std::thread threadElevador(&Elevador::mover, this);
-}
+// void Elevador::criarThread() {
+//   std::thread threadElevador(&Elevador::mover, this);
+// }
 
 int Elevador::getAndar() {
   return andar;
