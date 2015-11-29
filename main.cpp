@@ -38,22 +38,22 @@ int main() {
 
   controlador.getElevador(0)->getBotaoPainel(5)->apertar();
 
-  this_thread::sleep_for(chrono::milliseconds(500));
+  this_thread::sleep_for(chrono::milliseconds(1000));
   //usleep(chrono::milliseconds(500));
   printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(500));
+  this_thread::sleep_for(chrono::milliseconds(1000));
   //usleep(chrono::milliseconds(500));
   printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(500));
+  this_thread::sleep_for(chrono::milliseconds(1000));
   //usleep(chrono::milliseconds(500));
   printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(500));
+  this_thread::sleep_for(chrono::milliseconds(1000));
   //usleep(chrono::milliseconds(500));
   printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(500));
+  this_thread::sleep_for(chrono::milliseconds(1000));
   //usleep(chrono::milliseconds(500));
   printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(500));
+  this_thread::sleep_for(chrono::milliseconds(1000));
   //usleep(chrono::milliseconds(500));
   printelevador0(controlador.getElevador(0), 0);
 
