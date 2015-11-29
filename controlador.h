@@ -8,6 +8,7 @@ public:
   bool andaresParar[NUMELEVADORES][PISOMAX];
   bool chamadasSubir[PISOMAX];
   bool chamadasDescer[PISOMAX];
+  bool pendencias[NUMELEVADORES];
 
 public:
   Controlador();
@@ -15,6 +16,7 @@ public:
   void threadControlador();
   void atualizaArrays();
   void atualizarChamadas();
+  void atualizarPortas();
   void atenderChamadas();
   void atualizarMovimentos();
   bool temPendencias(int idElevador);
