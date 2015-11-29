@@ -13,6 +13,12 @@
 #include "controlador.cpp"
 using namespace std;
 
+void foo(Elevador* elevador) {
+  while(1) {
+    elevador->mover();
+  }
+}
+
 void printelevador0(Elevador* elevador, int i) {
   cout << "Elevador " << i << endl;
   cout << "Andar: " << elevador->getAndar() << endl;
@@ -23,6 +29,7 @@ void printelevador0(Elevador* elevador, int i) {
 
 int main() {
   Controlador controlador;
+  std::thread first (foo, controlador.getElevador(0));
 
   printelevador0(controlador.getElevador(0), 0);
 

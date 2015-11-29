@@ -16,7 +16,6 @@ public:
 	Elevador();
 	Elevador(int id);
   void mover();
-  void criarThread();
   int getAndar();
   bool getSubindo();
   bool getDescendo();
