@@ -23,11 +23,11 @@ public:
   void setSubindo(bool i);
   void setDescendo(bool i);
   void setEmMovimento(bool i);
-  Porta getPorta();
-  Indicador getIndicador();
+  Porta* getPorta();
+  Indicador* getIndicador();
   int getBotoesApertados();
-  Botao getBotaoAbre();
-  Botao getBotaoFecha();
+  Botao* getBotaoAbre();
+  Botao* getBotaoFecha();
   Botao* getBotaoPainel(int i);
 };
 #endif

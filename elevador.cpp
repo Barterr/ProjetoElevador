@@ -62,23 +62,23 @@ void Elevador::setEmMovimento(bool i){
   emMovimento = i;
 }
 
-Porta Elevador::getPorta(){
-  return porta;
+Porta* Elevador::getPorta(){
+  return &porta;
 }
 
-Botao Elevador::getBotaoAbre(){
-  return abrePorta;
+Botao* Elevador::getBotaoAbre(){
+  return &abrePorta;
 }
 
-Botao Elevador::getBotaoFecha(){
-  return fechaPorta;
+Botao* Elevador::getBotaoFecha(){
+  return &fechaPorta;
 }
 Botao* Elevador::getBotaoPainel(int i){
   return &botoesPainel[i];
 }
 
-Indicador Elevador::getIndicador(){
-  return indicador;
+Indicador* Elevador::getIndicador(){
+  return &indicador;
 }
 
 int Elevador::getBotoesApertados(){

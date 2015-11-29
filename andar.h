@@ -11,7 +11,7 @@ public:
   Andar();
   Porta* getPorta(int idElevador);
   Indicador* getIndicador(int idElevador);
-  Botao getBotaoSubir();
-  Botao getBotaoDescer();
+  Botao* getBotaoSubir();
+  Botao* getBotaoDescer();
 };
 #endif
