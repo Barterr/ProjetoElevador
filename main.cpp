@@ -49,7 +49,7 @@ int main() {
   //usleep(chrono::milliseconds(500));
   while(1) {
     cout << "Proximo Destino: " << controlador.getProximoDestino(0) << endl;
-
+    cout << "Tem Pendencias: " << controlador.temPendencias() << endl;
     cout << "Andares Parar: ";
     for (int i = 0; i < PISOMAX; i++) {
       cout << controlador.andaresParar[0][i] << " ";
