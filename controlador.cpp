@@ -16,9 +16,9 @@ Controlador::Controlador() {
 }
 
 void Controlador::threadControlador() {
-  for (int i = 0; i < NUMELEVADORES; i++) {
-    elevadores[i].criarThread();
-  }
+  // for (int i = 0; i < NUMELEVADORES; i++) {
+  //   elevadores[i].criarThread();
+  // }
 
   while (1) {
     atualizarChamadas();
@@ -219,6 +219,7 @@ int Controlador::getProximoDestino(int idElevador) {
       }
     }
   }
+  return -1;
 }
 
 void       Controlador::procedimentosFinais() {}

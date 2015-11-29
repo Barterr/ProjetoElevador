@@ -16,10 +16,6 @@ Elevador::Elevador(int id) : indicador(id) {
   subindo     = 0;
 }
 
-void Elevador::criarThread() {
-  std::thread threadElevador (mover);
-}
-
 void Elevador::mover() {
   while (1) {
     if (emMovimento) {
@@ -35,6 +31,10 @@ void Elevador::mover() {
       std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
   }
+}
+
+void Elevador::criarThread() {
+  std::thread threadElevador (&Elevador::mover);
 }
 
 int Elevador::getAndar() {
