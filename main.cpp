@@ -13,39 +13,39 @@
 #include "controlador.cpp"
 using namespace std;
 
-void printelevador0() {
-  cout << "Elevador 0" << endl;
-  cout << "Andar: " << controlador.getElevador(0)->getAndar() << endl;
-  cout << "Subindo: " << controlador.getElevador(0)->getDescendo() << endl;
-  cout << "Descendo: " << controlador.getElevador(0)->getSubindo() << endl;
-  cout << "Em Movimento: " << controlador.getElevador(0)->getEmMovimento() << endl;
+void printelevador0(Elevador &elevador, int i) {
+  cout << "Elevador " << i << endl;
+  cout << "Andar: " << elevador->getAndar() << endl;
+  cout << "Subindo: " << elevador->getDescendo() << endl;
+  cout << "Descendo: " << elevador->getSubindo() << endl;
+  cout << "Em Movimento: " << elevador->getEmMovimento() << endl;
 }
 
 int main() {
   Controlador controlador;
 
-  printelevador0();
+  printelevador0(controlador.getElevador(0), 0);
 
   controlador.getElevador(0)->getBotaoPainel(5)->apertar();
 
   this_thread::sleep_for(chrono::milliseconds(500));
   //usleep(chrono::milliseconds(500));
-  printelevador0();
+  printelevador0(controlador.getElevador(0), 0);
   this_thread::sleep_for(chrono::milliseconds(500));
   //usleep(chrono::milliseconds(500));
-  printelevador0();
+  printelevador0(controlador.getElevador(0), 0);
   this_thread::sleep_for(chrono::milliseconds(500));
   //usleep(chrono::milliseconds(500));
-  printelevador0();
+  printelevador0(controlador.getElevador(0), 0);
   this_thread::sleep_for(chrono::milliseconds(500));
   //usleep(chrono::milliseconds(500));
-  printelevador0();
+  printelevador0(controlador.getElevador(0), 0);
   this_thread::sleep_for(chrono::milliseconds(500));
   //usleep(chrono::milliseconds(500));
-  printelevador0();
+  printelevador0(controlador.getElevador(0), 0);
   this_thread::sleep_for(chrono::milliseconds(500));
   //usleep(chrono::milliseconds(500));
-  printelevador0();
+  printelevador0(controlador.getElevador(0), 0);
 
   while (1);
   return 0;
