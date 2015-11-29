@@ -30,9 +30,9 @@ void printelevador0(Elevador* elevador, int i) {
 int main() {
   Controlador controlador;
 
-  std::thread first (foo, controlador.getElevador(0));
+  thread first (foo, controlador.getElevador(0));
 
-  std::thread contthread (&controlador::threadControlador);
+  thread contthread (&controlador::threadControlador);
 
   printelevador0(controlador.getElevador(0), 0);
 
