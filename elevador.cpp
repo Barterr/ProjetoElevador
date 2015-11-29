@@ -16,30 +16,20 @@ Elevador::Elevador(int id) : indicador(id) {
   subindo = 0;
 }
 
-void Elevador::subir(){
-  if (andar != PISOMAX) {
-    descendo = 0;
-    subindo = 1;
-    emMovimento = 1;
-    // std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
-    andar++;
-    descendo = 0;
-    subindo = 0;
-    emMovimento = 0;
-  }
-  return;
-}
-
-void Elevador::descer(){
-  if (andar != PISOMAX) {
-    descendo = 1;
-    subindo = 0;
-    emMovimento = 1;
-    // std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
-    andar--;
-    descendo = 0;
-    subindo = 0;
-    emMovimento = 0;
+void Elevador::mover(){
+  while(1) {
+    if (emMovimento){
+      if (subindo) {
+        // std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
+        andar++;
+      } else
+      if (descendo) {
+        // std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
+        andar--;
+      }
+    } else {
+      // std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
   }
   return;
 }
@@ -60,15 +50,27 @@ bool Elevador::getEmMovimento(){
   return emMovimento;
 }
 
+void Elevador::setSubindo(bool i){
+  subindo = i;
+}
+
+void Elevador::setDescendo(bool i){
+  descendo = i;
+}
+
+void Elevador::setEmMovimento(bool i){
+  emMovimento = i;
+}
+
 Porta Elevador::getPorta(){
   return porta;
 }
 
-Botao Elevador::getBotaoAbre(){
+Botao getBotaoAbre(){
   return abrePorta;
 }
 
-Botao Elevador::getBotaoFecha(){
+Botao getBotaoFecha(){
   return fechaPorta;
 }
 
