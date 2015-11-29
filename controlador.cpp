@@ -21,11 +21,11 @@ void Controlador::threadControlador() {
   // for (int i = 0; i < NUMELEVADORES; i++) {
   //   elevadores[i].criarThread();
   // }
-// std::cout << "oi" << std::endl;
+  // std::cout << "oi" << std::endl;
   while (1) {
     atualizarChamadas();
     atualizaArrays();
-    atenderChamadas ();
+    atenderChamadas();
     atualizarMovimentos();
     std::this_thread::sleep_for(std::chrono::milliseconds(5));
   }
@@ -163,16 +163,15 @@ void Controlador::atualizarMovimentos() {
           }
         }
       }
-      else {
-        if (!elevadores[i].getSubindo() && !elevadores[i].getDescendo()) {
-          elevadores[i].setDescendo(proximoDestino < andarAtual);
-          elevadores[i].setSubindo(proximoDestino > andarAtual);
-        }
+      else if (!elevadores[i].getSubindo() && !elevadores[i].getDescendo()) {
+        elevadores[i].setDescendo(proximoDestino < andarAtual);
+        elevadores[i].setSubindo(proximoDestino > andarAtual);
       }
+    } else {
+      elevadores[i].setEmMovimento(0);
+      elevadores[i].setSubindo(0);
+      elevadores[i].setDescendo(0);
     }
-    elevadores[i].setEmMovimento(0);
-    elevadores[i].setSubindo(0);
-    elevadores[i].setDescendo(0);
   }
 }
 
