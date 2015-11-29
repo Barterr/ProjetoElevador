@@ -5,12 +5,14 @@ class Controlador{
 private:
   Andar andares[PISOMAX];
   Elevador elevadores[NUMELEVADORES];
-  bool andaresParar[NUMELEVADORES][PISOMAX]
+  bool andaresParar[NUMELEVADORES][PISOMAX];
 
 public:
   Controlador();
+  Elevador* getElevador(int id);
   void threadControlador();
-  void atualizaIndicadores();
-
-}
+  void atualizaArrays();
+  void acionamentos();
+  void procedimentosFinais();
+};
 #endif
