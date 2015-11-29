@@ -13,7 +13,7 @@
 #include "controlador.cpp"
 using namespace std;
 
-void printelevador0(Elevador &elevador, int i) {
+void printelevador0(Elevador* elevador, int i) {
   cout << "Elevador " << i << endl;
   cout << "Andar: " << elevador->getAndar() << endl;
   cout << "Subindo: " << elevador->getDescendo() << endl;
