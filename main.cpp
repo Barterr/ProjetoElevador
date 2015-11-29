@@ -44,6 +44,14 @@ int main() {
   //usleep(chrono::milliseconds(500));
   while(1) {
     cout << "Proximo Destino: " << controlador.getProximoDestino(0) << endl;
+
+    cout << "Andares Parar: ";
+    for (int i = 0; i < count; i++) {
+      cout << controlador.andaresParar[0][i] << " ";
+    }
+    endl;
+
+
     printelevador0(controlador.getElevador(0), 0);
 
     this_thread::sleep_for(chrono::milliseconds(200));

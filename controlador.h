@@ -2,7 +2,7 @@
 #define CONTROLADOR_H
 
 class Controlador{
-private:
+public:
   Andar andares[PISOMAX];
   Elevador elevadores[NUMELEVADORES];
   bool andaresParar[NUMELEVADORES][PISOMAX];
