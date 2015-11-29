@@ -24,7 +24,7 @@ void printelevador0(Elevador* elevador, int i) {
   cout << "Andar: " << elevador->getAndar() << endl;
   cout << "Subindo: " << elevador->getDescendo() << endl;
   cout << "Descendo: " << elevador->getSubindo() << endl;
-  cout << "Em Movimento: " << elevador->getEmMovimento() << endl;
+  cout << "Em Movimento:a " << elevador->getEmMovimento() << endl;
 }
 
 int main() {
