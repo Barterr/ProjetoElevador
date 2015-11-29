@@ -19,7 +19,7 @@ void Controlador::threadControlador() {
   std::thread threadElevadores[NUMELEVADORES];
 
   for (int i = 0; i < NUMELEVADORES; i++) {
-    std::thread threadElevadores[i](elevadores[i].mover);
+    threadElevadores[i] = std::thread(elevadores[i].mover);
   }
 
   while (1) {
