@@ -206,21 +206,26 @@ int Controlador::getUltimoDestino(int idElevador) {
 }
 
 int Controlador::getProximoDestino(int idElevador) {
+  int proxDest = -1;
   if (elevadores[idElevador].getDescendo()) {
     for (int i = PISOMAX; i >= 0; i--) {
-      if (andaresParar[i]) {
-        return i;
+      if (andaresParar[idElevador][i]) {
+        proxDest = i;
+        break;
       }
     }
   }
   else {
+
     for (int i = 0; i < PISOMAX; i++) {
-      if (andaresParar[i]) {
-        return i;
+      if (andaresParar[idElevador][i]) {
+
+        proxDest = i;
+        break;
       }
     }
   }
-  return -1;
+  return proxDest;
 }
 
 void       Controlador::procedimentosFinais() {}

@@ -22,13 +22,13 @@ void bar(Controlador* controlador) {
   while(1) {
     controlador->threadControlador();
   }
-} 
+}
 
 void printelevador0(Elevador* elevador, int i) {
   cout << "Elevador " << i << endl;
   cout << "Andar: " << elevador->getAndar() << endl;
-  cout << "Subindo: " << elevador->getDescendo() << endl;
-  cout << "Descendo: " << elevador->getSubindo() << endl;
+  cout << "Descendo: " << elevador->getDescendo() << endl;
+  cout << "Subindo: " << elevador->getSubindo() << endl;
   cout << "Em Movimento: " << elevador->getEmMovimento() << endl;
   cout << "-----------------" << endl;
 }
@@ -40,7 +40,7 @@ int main() {
   thread contthread (bar, &controlador);
 
   printelevador0(controlador.getElevador(0), 0);
-
+    cout << "Tem Pendencias: " << controlador.temPendencias(0) << endl;
   controlador.getElevador(0)->getBotaoPainel(5)->apertar();
 
   this_thread::sleep_for(chrono::milliseconds(1000));
@@ -49,7 +49,7 @@ int main() {
   //usleep(chrono::milliseconds(500));
   while(1) {
     cout << "Proximo Destino: " << controlador.getProximoDestino(0) << endl;
-    cout << "Tem Pendencias: " << controlador.temPendencias() << endl;
+    cout << "Tem Pendencias: " << controlador.temPendencias(0) << endl;
     cout << "Andares Parar: ";
     for (int i = 0; i < PISOMAX; i++) {
       cout << controlador.andaresParar[0][i] << " ";
