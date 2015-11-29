@@ -17,11 +17,11 @@ Elevador::Elevador(int id) : indicador(id) {
 }
 
 void Elevador::subir(){
-  if andar != PISOMAX {
+  if (andar != PISOMAX) {
     descendo = 0;
     subindo = 1;
     emMovimento = 1;
-    std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
+    // std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
     andar++;
     descendo = 0;
     subindo = 0;
@@ -31,11 +31,11 @@ void Elevador::subir(){
 }
 
 void Elevador::descer(){
-  if andar != PISOMAX {
+  if (andar != PISOMAX) {
     descendo = 1;
     subindo = 0;
     emMovimento = 1;
-    std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
+    // std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
     andar--;
     descendo = 0;
     subindo = 0;
@@ -64,11 +64,11 @@ Porta Elevador::getPorta(){
   return porta;
 }
 
-Botao getBotaoAbre(){
+Botao Elevador::getBotaoAbre(){
   return abrePorta;
 }
 
-Botao getBotaoFecha(){
+Botao Elevador::getBotaoFecha(){
   return fechaPorta;
 }
 

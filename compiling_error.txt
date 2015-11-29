@@ -1,2 +1,0 @@
-D:/MinGW/bin/../lib/gcc/i686-w64-mingw32/4.8.2/../../../../i686-w64-mingw32/lib/../lib/libmingw32.a(lib32_libmingw32_a-crt0_c.o):crt0_c.c:(.text.startup+0x39): undefined reference to `WinMain@16'
-collect2.exe: error: ld returned 1 exit status

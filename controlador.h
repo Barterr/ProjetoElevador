@@ -4,13 +4,13 @@
 class Controlador{
 private:
   Andar andares[PISOMAX];
-  Elevador elevadores[2];
-  bool andaresParar[2][PISOMAX]
+  Elevador elevadores[NUMELEVADORES];
+  bool andaresParar[NUMELEVADORES][PISOMAX]
 
 public:
   Controlador();
   void threadControlador();
   void atualizaIndicadores();
-  
+
 }
 #endif
