@@ -3,14 +3,14 @@
 
 class Porta {
 private:
-  bool aberta;
-  bool sensor;
+        bool aberta;
+        bool sensor;
 public:
-	Porta();
-  bool estaAberta();
-  bool getSensor();
-  void setSensor(bool a);
-  void abrir();
-  void fechar();
+        Porta();
+        bool estaAberta();
+        bool getSensor();
+        void setSensor(bool a);
+        void abrir();
+        void fechar();
 };
 #endif

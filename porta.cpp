@@ -3,9 +3,9 @@
 /**
  * Construtor sem parametros
  */
-Porta::Porta(){
-  aberta=0;
-  sensor=0;
+Porta::Porta() {
+  aberta = 0;
+  sensor = 0;
 }
 
 /**
@@ -13,7 +13,7 @@ Porta::Porta(){
  * @method Porta::estaAberta
  * @return true se está aberta, false se não está
  */
-bool Porta::estaAberta(){
+bool Porta::estaAberta() {
   return aberta;
 }
 
@@ -22,7 +22,7 @@ bool Porta::estaAberta(){
  * @method Porta::getSensor
  * @return true se o sensor está ativado (algo bloqueando a porta), false se não
  */
-bool Porta::getSensor(){
+bool Porta::getSensor() {
   return sensor;
 }
 
@@ -31,7 +31,7 @@ bool Porta::getSensor(){
  * @method Porta::setSensor
  * @param  value            valor a ser setado
  */
-void Porta::setSensor(bool value){
+void Porta::setSensor(bool value) {
   sensor = value;
 }
 
@@ -39,7 +39,7 @@ void Porta::setSensor(bool value){
  * Abre a porta
  * @method Porta::abrir
  */
-void Porta::abrir(){
+void Porta::abrir() {
   aberta = 1;
 }
 
@@ -47,7 +47,7 @@ void Porta::abrir(){
  * Fecha a porta
  * @method Porta::fechar
  */
-void Porta::fechar(){
+void Porta::fechar() {
   if (!sensor) {
     aberta = 0;
   }

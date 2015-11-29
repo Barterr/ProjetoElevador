@@ -3,7 +3,7 @@
 /**
  * Construtor da classe Botao
  */
-Botao::Botao (){
+Botao::Botao() {
   pressionado = 0;
 }
 
@@ -12,22 +12,22 @@ Botao::Botao (){
  * @method Botao::estaPressionado
  * @return true se pressionado, false se não
  */
-bool Botao::estaPressionado(){
- return pressionado;
+bool Botao::estaPressionado() {
+  return pressionado;
 }
 
 /**
  * Aperta o botão
  * @method Botao::apertar
  */
-void Botao::apertar(){
- pressionado = 1;
+void Botao::apertar() {
+  pressionado = 1;
 }
 
 /**
  * Desaperta o botão
  * @method Botao::desapertar
  */
-void Botao::desapertar(){
+void Botao::desapertar() {
   pressionado = 0;
 }

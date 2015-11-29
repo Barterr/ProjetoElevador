@@ -1,13 +1,13 @@
 #ifndef BOTAO_H
 #define BOTAO_H
 
-class Botao{
+class Botao {
 private:
-  bool pressionado;
+        bool pressionado;
 public:
-  Botao();
-  bool estaPressionado();
-  void apertar();
-  void desapertar();
+        Botao();
+        bool estaPressionado();
+        void apertar();
+        void desapertar();
 };
 #endif

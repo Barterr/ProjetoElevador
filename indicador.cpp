@@ -5,20 +5,21 @@
 /**
  * Construtor da classe Indicador
  */
-Indicador::Indicador(){
-  elevador = -1;
-  subindo = 0;
-  descendo = 0;
+Indicador::Indicador() {
+  elevador      = -1;
+  subindo       = 0;
+  descendo      = 0;
   andarElevador = 0;
 }
 
 /**
- * Construtor da classe Indicador, que recebe o id do elevador a qual ele se refere
+ * Construtor da classe Indicador, que recebe o id do elevador a qual ele se
+ *refere
  */
-Indicador::Indicador(int id){
-  elevador = id;
-  subindo = 0;
-  descendo = 0;
+Indicador::Indicador(int id) {
+  elevador      = id;
+  subindo       = 0;
+  descendo      = 0;
   andarElevador = 0;
 }
 
@@ -27,21 +28,20 @@ Indicador::Indicador(int id){
  * @method Indicador::setDir
  * @param  dir               direção do elevador (SUBINDO, DESCENDO ou IDLE)
  */
-void Indicador::setDir(std::string dir){
+void Indicador::setDir(std::string dir) {
   if (dir == "SUBINDO") {
-    subindo = 1;
+    subindo  = 1;
     descendo = 0;
   } else if (dir == "DESCENDO") {
-    subindo = 0;
+    subindo  = 0;
     descendo = 1;
   } else if (dir == "IDLE") {
-    subindo = 0;
+    subindo  = 0;
     descendo = 0;
   } else {
-    subindo = 0;
+    subindo  = 0;
     descendo = 0;
   }
-  return;
 }
 
 /**
@@ -49,7 +49,6 @@ void Indicador::setDir(std::string dir){
  * @method Indicador::setAndar
  * @param  andar               número do andar
  */
-void Indicador::setAndar(int andar){
+void Indicador::setAndar(int andar) {
   andarElevador = andar;
-  return;
 }
