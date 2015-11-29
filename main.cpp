@@ -22,7 +22,7 @@ void bar(Controlador* controlador) {
   while(1) {
     controlador->threadControlador();
   }
-}
+} 
 
 void printelevador0(Elevador* elevador, int i) {
   cout << "Elevador " << i << endl;
