@@ -14,7 +14,6 @@ Elevador::Elevador(int id) : indicador(id) {
   emMovimento = 0;
   descendo    = 0;
   subindo     = 0;
-  asdas
 }
 
 void Elevador::mover() {
@@ -50,16 +49,16 @@ bool Elevador::getEmMovimento() {
   return emMovimento;
 }
 
-void Elevador::setSubindo(bool i) {
-  subindo = i;
+void Elevador::setSubindo(bool valor) {
+  subindo = valor;
 }
 
-void Elevador::setDescendo(bool i) {
-  descendo = i;
+void Elevador::setDescendo(bool valor) {
+  descendo = valor;
 }
 
-void Elevador::setEmMovimento(bool i) {
-  emMovimento = i;
+void Elevador::setEmMovimento(bool valor) {
+  emMovimento = valor;
 }
 
 Porta * Elevador::getPorta() {
