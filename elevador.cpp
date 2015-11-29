@@ -66,12 +66,15 @@ Porta Elevador::getPorta(){
   return porta;
 }
 
-Botao getBotaoAbre(){
+Botao Elevador::getBotaoAbre(){
   return abrePorta;
 }
 
-Botao getBotaoFecha(){
+Botao Elevador::getBotaoFecha(){
   return fechaPorta;
+}
+Botao* Elevador::getBotaoPainel(int i){
+  return &botoesPainel[i];
 }
 
 Indicador Elevador::getIndicador(){
@@ -79,5 +82,10 @@ Indicador Elevador::getIndicador(){
 }
 
 int Elevador::getBotoesApertados(){
-  //a implementar
+  int out = 0;
+  for (int i = PISOMAX-1; i >= 0; i--) {
+    out <<= 1;
+    out += botoesPainel[i].estaPressionado();
+  }
+  return out;
 }

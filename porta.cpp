@@ -12,13 +12,12 @@ bool Porta::getSensor(){
 }
 void Porta::setSensor(bool a){
   sensor = a;
-  return;
 }
 void Porta::abrir(){
   aberta = 1;
-  return;
 }
 void Porta::fechar(){
-  aberta = 0;
-  return;
+  if (!sensor) {
+    aberta = 0;
+  }
 }

@@ -2,8 +2,8 @@
 #define ELEVADOR_H
 
 class Elevador {
-private:
-  Botao botoes [PISOMAX];
+public:
+  Botao botoesPainel [PISOMAX];
   bool subindo;
   bool descendo;
   bool emMovimento;
@@ -20,13 +20,14 @@ public:
   bool getSubindo();
   bool getDescendo();
   bool getEmMovimento();
-  void setSubindo(int i);
-  void setDescendo(int i);
-  void setEmMovimento(int i);
+  void setSubindo(bool i);
+  void setDescendo(bool i);
+  void setEmMovimento(bool i);
   Porta getPorta();
   Indicador getIndicador();
   int getBotoesApertados();
   Botao getBotaoAbre();
   Botao getBotaoFecha();
+  Botao* getBotaoPainel(int i);
 };
 #endif
