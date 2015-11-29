@@ -32,7 +32,6 @@ int main() {
   Controlador controlador;
 
   thread first (foo, controlador.getElevador(0));
-
   thread contthread (&Controlador::threadControlador,controlador);
 
   printelevador0(controlador.getElevador(0), 0);
@@ -44,7 +43,9 @@ int main() {
   controlador.getElevador(0)->setSubindo(1);
   //usleep(chrono::milliseconds(500));
   while(1) {
+    cout << "Proximo Destino: " << controlador.getProximoDestino(0) << endl;
     printelevador0(controlador.getElevador(0), 0);
+
     this_thread::sleep_for(chrono::milliseconds(200));
 }
 
