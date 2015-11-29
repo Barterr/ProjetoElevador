@@ -50,6 +50,7 @@ void printelevador0(Controlador *controlador) {
   imprime("------------"); imprime("------------"); imprime("------------"); cout << endl;
   imprime("Proximo Destino"); imprime(controlador->getProximoDestino(0)); imprime(controlador->getProximoDestino(1)); cout << endl;
   imprime("Tem Pendencias"); imprime(controlador->pendencias[0]); imprime(controlador->pendencias[1]); cout << endl;
+  imprime("Tem Pendencias2"); imprime(controlador->temPendencias(0)); imprime(controlador->temPendencias(1)); cout << endl;
   imprime("Porta"); imprime(controlador->getElevador(0)->getPorta()->estaAberta()); imprime(controlador->getElevador(1)->getPorta()->estaAberta()); cout << endl;
   imprime("Andares Parar"); imprime(bitset<PISOMAX>(andaresParar[0])); imprime(bitset<PISOMAX>(andaresParar[1])); cout << endl;
   imprime("Andar"); imprime(controlador->getElevador(0)->getAndar()); imprime(controlador->getElevador(1)->getAndar()); cout << endl;
@@ -71,13 +72,14 @@ int main() {
 
   printelevador0(&controlador);
   // controlador.getElevador(0)->getBotaoPainel(5)->apertar();
-  controlador.getElevador(0)->getBotaoPainel(7)->apertar();
-  controlador.andares[1].getBotaoDescer()->apertar();
-
-  controlador.getElevador(0)->setEmMovimento(1);
-  controlador.getElevador(1)->andar = 3;
+  this_thread::sleep_for(chrono::milliseconds(2000));
+  controlador.getElevador(1)->getBotaoPainel(7)->apertar();
+  // controlador.andares[1].getBotaoDescer()->apertar();
+  //
+  // controlador.getElevador(0)->setEmMovimento(1);
+  controlador.getElevador(1)->andar = 5;
   controlador.getElevador(1)->setEmMovimento(1);
-  controlador.getElevador(0)->setSubindo(1);
+  controlador.getElevador(1)->setSubindo(1);
 
   // usleep(chrono::milliseconds(500));
   while (1) {

@@ -25,6 +25,14 @@ void Controlador::threadControlador() {
     atualizarChamadas();
     atualizaArrays();
     atenderChamadas();
+    for (int j = 0; j < NUMELEVADORES; j++) {
+      for (int i = 0; i < PISOMAX; i++) {
+        if (andaresParar[j][i]) {
+          pendencias[j] = 1;
+        }
+      }
+    }
+    std::cout << pendencias[1];
     atualizarMovimentos();
     atualizarPortas();
     std::this_thread::sleep_for(std::chrono::milliseconds(5));
@@ -144,9 +152,8 @@ void Controlador::atualizarMovimentos() {
     int andarAtual     = elevadores[i].getAndar();
     int proximoDestino = getProximoDestino(i);
     int ultimoDestino  = getUltimoDestino(i);
-    pendencias[i] = temPendencias(i);
 
-    if (pendencias[i]) {
+    if (temPendencias(i)) {
       if (elevadores[i].getEmMovimento() && (elevadores[i].getSubindo() || elevadores[i].getDescendo())) {
         if (elevadores[i].getSubindo()) {
           if (proximoDestino == (andarAtual + 1)) {
@@ -176,7 +183,6 @@ void Controlador::atualizarMovimentos() {
       elevadores[i].setEmMovimento(0);
       elevadores[i].setSubindo(0);
       elevadores[i].setDescendo(0);
-      std::cout << "asd";
     }
   }
 }
@@ -191,12 +197,13 @@ void Controlador::atualizarPortas() {
 }
 
 bool Controlador::temPendencias(int idElevador) {
+  bool out;
   for (int i = 0; i < PISOMAX; i++) {
     if (andaresParar[idElevador][i]) {
-      return 1;
+      out = 1;
     }
   }
-  return 0;
+  return out;
 }
 
 int Controlador::getUltimoDestino(int idElevador) {
