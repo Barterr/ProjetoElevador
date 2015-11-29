@@ -1,4 +1,6 @@
 #include "controlador.h"
+#include <iostream>
+
 
 Controlador::Controlador() {
   for (int i = 0; i < PISOMAX; i++) {
@@ -19,11 +21,11 @@ void Controlador::threadControlador() {
   // for (int i = 0; i < NUMELEVADORES; i++) {
   //   elevadores[i].criarThread();
   // }
-
+// std::cout << "oi" << std::endl;
   while (1) {
     atualizarChamadas();
     atualizaArrays();
-    atenderChamadas();
+    atenderChamadas ();
     atualizarMovimentos();
     std::this_thread::sleep_for(std::chrono::milliseconds(5));
   }

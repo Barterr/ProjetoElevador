@@ -25,6 +25,7 @@ void printelevador0(Elevador* elevador, int i) {
   cout << "Subindo: " << elevador->getDescendo() << endl;
   cout << "Descendo: " << elevador->getSubindo() << endl;
   cout << "Em Movimento: " << elevador->getEmMovimento() << endl;
+  cout << "-----------------" << endl;
 }
 
 int main() {
@@ -32,30 +33,20 @@ int main() {
 
   thread first (foo, controlador.getElevador(0));
 
-  thread contthread (&controlador::threadControlador);
+  thread contthread (&Controlador::threadControlador,controlador);
 
   printelevador0(controlador.getElevador(0), 0);
 
   controlador.getElevador(0)->getBotaoPainel(5)->apertar();
 
   this_thread::sleep_for(chrono::milliseconds(1000));
+  controlador.getElevador(0)->setEmMovimento(1);
+  controlador.getElevador(0)->setSubindo(1);
   //usleep(chrono::milliseconds(500));
-  printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(1000));
-  //usleep(chrono::milliseconds(500));
-  printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(1000));
-  //usleep(chrono::milliseconds(500));
-  printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(1000));
-  //usleep(chrono::milliseconds(500));
-  printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(1000));
-  //usleep(chrono::milliseconds(500));
-  printelevador0(controlador.getElevador(0), 0);
-  this_thread::sleep_for(chrono::milliseconds(1000));
-  //usleep(chrono::milliseconds(500));
-  printelevador0(controlador.getElevador(0), 0);
+  while(1) {
+    printelevador0(controlador.getElevador(0), 0);
+    this_thread::sleep_for(chrono::milliseconds(200));
+}
 
   while (1);
   return 0;
