@@ -8,6 +8,7 @@ void foo()
 {
   std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
  std::cout << "1111111"<< std::endl;
+std::this_thread::sleep_for(std::chrono::milliseconds(20*1000));
 
 }
 
@@ -15,6 +16,7 @@ void bar()
 {
   std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
 std::cout << "5555555"<< std::endl;
+  std::this_thread::sleep_for(std::chrono::milliseconds(10*1000));
 }
 
 int main()
