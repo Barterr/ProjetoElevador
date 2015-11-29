@@ -37,7 +37,7 @@ int main() {
   Controlador controlador;
 
   thread first (foo, controlador.getElevador(0));
-  thread contthread (bar, controlador);
+  thread contthread (bar, &controlador);
 
   printelevador0(controlador.getElevador(0), 0);
 
@@ -51,10 +51,10 @@ int main() {
     cout << "Proximo Destino: " << controlador.getProximoDestino(0) << endl;
 
     cout << "Andares Parar: ";
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < PISOMAX; i++) {
       cout << controlador.andaresParar[0][i] << " ";
     }
-    endl;
+  cout <<  endl;
 
 
     printelevador0(controlador.getElevador(0), 0);
