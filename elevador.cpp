@@ -16,6 +16,10 @@ Elevador::Elevador(int id) : indicador(id) {
   subindo     = 0;
 }
 
+void Elevador::criarThread() {
+  std::thread threadElevador (mover);
+}
+
 void Elevador::mover() {
   while (1) {
     if (emMovimento) {
