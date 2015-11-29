@@ -24,12 +24,15 @@ void printelevador0(Elevador* elevador, int i) {
   cout << "Andar: " << elevador->getAndar() << endl;
   cout << "Subindo: " << elevador->getDescendo() << endl;
   cout << "Descendo: " << elevador->getSubindo() << endl;
-  cout << "Em Movimento:a " << elevador->getEmMovimento() << endl;
+  cout << "Em Movimento: " << elevador->getEmMovimento() << endl;
 }
 
 int main() {
   Controlador controlador;
+
   std::thread first (foo, controlador.getElevador(0));
+
+  std::thread contthread (&controlador::threadControlador);
 
   printelevador0(controlador.getElevador(0), 0);
 
