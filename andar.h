@@ -11,7 +11,7 @@ public:
         bool flagsAbrirPorta[NUMELEVADORES];
 public:
         Andar();
-        void threadPortas();
+        // void threadPortas();
         Porta* getPorta(int idElevador);
         Indicador* getIndicador(int idElevador);
         Botao* getBotaoSubir();
