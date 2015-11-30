@@ -8,7 +8,8 @@ Elevador::Elevador() {
   descendo    = 0;
   subindo     = 0;
   flagParar   = 0;
-  flagOcupado = 0;
+  flagFecharPorta = 0;
+  flagAbrirPorta = 0;
 }
 
 Elevador::Elevador(int id) : indicador(id) {
@@ -17,7 +18,8 @@ Elevador::Elevador(int id) : indicador(id) {
   descendo    = 0;
   subindo     = 0;
   flagParar   = 0;
-  flagOcupado = 0;
+  flagFecharPorta = 0;
+  flagAbrirPorta = 0;
 }
 
 void Elevador::mover() {
@@ -25,12 +27,12 @@ void Elevador::mover() {
     if (emMovimento && !porta.estaAberta()) {
       if (subindo) {
         flagParar = 1;
-        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         andar++;
       } else
       if (descendo) {
         flagParar = 1;
-        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         andar--;
       }
     } else {
@@ -39,12 +41,33 @@ void Elevador::mover() {
   }
 }
 
+void Elevador::threadPortas() {
+  while(1){
+    if (flagAbrirPorta) {
+      porta.abrir();
+      flagAbrirPorta = 0;
+    }
+    else if (flagFecharPorta) {
+      porta.fechar();
+      emMovimento = 1;
+      flagFecharPorta = 0;
+    }
+  }
+  std::this_thread::sleep_for(std::chrono::milliseconds(50));
+}
+
 int Elevador::getAndar() {
   return andar;
 }
 
-int Elevador::getFlagParar() {
+bool Elevador::getFlagParar() {
   return flagParar;
+}
+bool Elevador::getFlagAbrirPorta() {
+  return flagAbrirPorta;
+}
+bool Elevador::getFlagFecharPorta() {
+  return flagFecharPorta;
 }
 
 bool Elevador::getSubindo() {
@@ -71,8 +94,16 @@ void Elevador::setEmMovimento(bool valor) {
   emMovimento = valor;
 }
 
-void Elevador::setFlagParar(int valor) {
+void Elevador::setFlagParar(bool valor) {
   flagParar = valor;
+}
+
+void Elevador::setFlagAbrirPorta(bool valor) {
+  flagAbrirPorta = valor;
+}
+
+void Elevador::setFlagFecharPorta(bool valor) {
+  flagFecharPorta = valor;
 }
 
 Porta * Elevador::getPorta() {

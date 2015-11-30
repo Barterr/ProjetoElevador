@@ -12,17 +12,17 @@ std::this_thread::sleep_for(std::chrono::milliseconds(20*1000));
 
 }
 
-void bar()
+void bar(int i)
 {
   std::this_thread::sleep_for(std::chrono::milliseconds(3*1000));
-std::cout << "5555555"<< std::endl;
+std::cout << i << std::endl;
   std::this_thread::sleep_for(std::chrono::milliseconds(10*1000));
 }
 
 int main()
 {
   std::thread first (foo);     // spawn new thread that calls foo()
-    std::thread second (bar);
+    std::thread second (bar, 345230);
   std::cout << "main, foo and bar now execute concurrently...\n";
 
   // synchronize threads:

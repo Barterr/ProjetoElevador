@@ -13,7 +13,7 @@ public:
   Controlador();
   Elevador* getElevador(int id);
   void threadControlador();
-  void atualizaArrays();
+  void atualizarArrays();
   void atualizarChamadas();
   void atualizarPortas();
   void atenderChamadas();
