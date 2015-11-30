@@ -7,6 +7,8 @@ Elevador::Elevador() {
   emMovimento = 0;
   descendo    = 0;
   subindo     = 0;
+  flagParar   = 0;
+  flagOcupado = 0;
 }
 
 Elevador::Elevador(int id) : indicador(id) {
@@ -14,31 +16,35 @@ Elevador::Elevador(int id) : indicador(id) {
   emMovimento = 0;
   descendo    = 0;
   subindo     = 0;
+  flagParar   = 0;
+  flagOcupado = 0;
 }
 
 void Elevador::mover() {
   while (1) {
-    if (emMovimento) {
+    if (emMovimento && !porta.estaAberta()) {
       if (subindo) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        flagParar = 1;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
         andar++;
       } else
       if (descendo) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        flagParar = 1;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1500));
         andar--;
       }
     } else {
-      std::this_thread::sleep_for(std::chrono::milliseconds(100));
+      std::this_thread::sleep_for(std::chrono::milliseconds(150));
     }
   }
 }
 
-// void Elevador::criarThread() {
-//   std::thread threadElevador(&Elevador::mover, this);
-// }
-
 int Elevador::getAndar() {
   return andar;
+}
+
+int Elevador::getFlagParar() {
+  return flagParar;
 }
 
 bool Elevador::getSubindo() {
@@ -63,6 +69,10 @@ void Elevador::setDescendo(bool valor) {
 
 void Elevador::setEmMovimento(bool valor) {
   emMovimento = valor;
+}
+
+void Elevador::setFlagParar(int valor) {
+  flagParar = valor;
 }
 
 Porta * Elevador::getPorta() {

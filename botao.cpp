@@ -5,6 +5,7 @@
  */
 Botao::Botao() {
   pressionado = 0;
+  atendido = 1;
 }
 
 /**
@@ -16,12 +17,21 @@ bool Botao::estaPressionado() {
   return pressionado;
 }
 
+bool Botao::getAtendido() {
+  return atendido;
+}
+
+void Botao::setAtendido(bool valor) {
+  atendido = valor;
+}
+
 /**
  * Aperta o botão
  * @method Botao::apertar
  */
 void Botao::apertar() {
   pressionado = 1;
+  atendido = 0;
 }
 
 /**
@@ -30,4 +40,5 @@ void Botao::apertar() {
  */
 void Botao::desapertar() {
   pressionado = 0;
+  atendido = 1;
 }

@@ -1,5 +1,5 @@
 #define PISOMAX 12
-#define NUMELEVADORES 2
+#define NUMELEVADORES 3
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -13,18 +13,6 @@
 #include "controlador.cpp"
 #include "headimprime.cpp"
 using namespace std;
-
-void foo(Elevador *elevador) {
-  while (1) {
-    elevador->mover();
-  }
-}
-
-void bar(Controlador *controlador) {
-  while (1) {
-    controlador->threadControlador();
-  }
-}
 
 void printelevador0(Controlador *controlador) {
   #ifdef linux
@@ -49,45 +37,44 @@ void printelevador0(Controlador *controlador) {
   imprime(""); imprime("Elevador 0"); imprime("Elevador 1"); cout << endl;
   imprime("------------"); imprime("------------"); imprime("------------"); cout << endl;
   imprime("Proximo Destino"); imprime(controlador->getProximoDestino(0)); imprime(controlador->getProximoDestino(1)); cout << endl;
-  imprime("Tem Pendencias"); imprime(controlador->pendencias[0]); imprime(controlador->pendencias[1]); cout << endl;
-  imprime("Tem Pendencias2"); imprime(controlador->temPendencias(0)); imprime(controlador->temPendencias(1)); cout << endl;
-  imprime("Porta"); imprime(controlador->getElevador(0)->getPorta()->estaAberta()); imprime(controlador->getElevador(1)->getPorta()->estaAberta()); cout << endl;
+  imprime("Tem Pendencias"); imprime((controlador->temPendencias(0))?"Sim":"Nao"); imprime((controlador->temPendencias(1))?"Sim":"Nao"); cout << endl;
+  imprime("Porta Aberta"); imprime((controlador->getElevador(0)->getPorta()->estaAberta())?"Aberta":"Fechada"); imprime((controlador->getElevador(1)->getPorta()->estaAberta())?"Aberta":"Fechada"); cout << endl;
   imprime("Andares Parar"); imprime(bitset<PISOMAX>(andaresParar[0])); imprime(bitset<PISOMAX>(andaresParar[1])); cout << endl;
   imprime("Andar"); imprime(controlador->getElevador(0)->getAndar()); imprime(controlador->getElevador(1)->getAndar()); cout << endl;
-  imprime("Descendo"); imprime(controlador->getElevador(0)->getDescendo()); imprime(controlador->getElevador(1)->getDescendo()); cout << endl;
-  imprime("Subindo"); imprime(controlador->getElevador(0)->getSubindo()); imprime(controlador->getElevador(1)->getSubindo()); cout << endl;
-
+  imprime("Subindo     /\\"); imprime(controlador->getElevador(0)->getSubindo()); imprime(controlador->getElevador(1)->getSubindo()); cout << endl;
+  imprime("Descendo    \\/"); imprime(controlador->getElevador(0)->getDescendo()); imprime(controlador->getElevador(1)->getDescendo()); cout << endl;
   imprime("Em Movimento"); imprime(controlador->getElevador(0)->getEmMovimento()); imprime(controlador->getElevador(1)->getEmMovimento()); cout << endl;
+  imprime("Flag Parar"); imprime(controlador->getElevador(0)->getFlagParar()); imprime(controlador->getElevador(1)->getFlagParar()); cout << endl;
   imprime("------------"); imprime("------------"); imprime("------------"); cout << endl;
   imprime("Chamadas Subir"); imprime(bitset<PISOMAX>(chamadasSubir)); cout << endl;
   imprime("Chamadas Descer"); imprime(bitset<PISOMAX>(chamadasDescer)); cout << endl;
 }
 
 int main() {
-  Controlador controlador;
+  Controlador control;
 
-  thread first(foo, controlador.getElevador(0));
-  thread second(foo, controlador.getElevador(1));
-  thread contthread(bar, &controlador);
+  thread first(control.getElevador(0)->mover, control.getElevador(0));
+  thread second(control.getElevador(1)->mover, control.getElevador(1));
+  thread contThread(control.threadControlador, &control);
 
-  printelevador0(&controlador);
-  // controlador.getElevador(0)->getBotaoPainel(5)->apertar();
-  this_thread::sleep_for(chrono::milliseconds(2000));
-  controlador.getElevador(1)->getBotaoPainel(7)->apertar();
-  // controlador.andares[1].getBotaoDescer()->apertar();
-  //
-  // controlador.getElevador(0)->setEmMovimento(1);
-  controlador.getElevador(1)->andar = 5;
-  controlador.getElevador(1)->setEmMovimento(1);
-  controlador.getElevador(1)->setSubindo(1);
+  control.getElevador(0)->andar = 6;
+  control.getElevador(0)->getBotaoPainel(9)->apertar();
+  control.getElevador(0)->getBotaoPainel(1)->apertar();
+
+  printelevador0(&control);
+  // this_thread::sleep_for(chrono::milliseconds(1000));
+  // control.andares[5].getBotaoDescer()->apertar();
+  // control.getElevador(1)->setEmMovimento(1);
+  // control.getElevador(1)->setDescendo(1);
+  // control.getElevador(0)->setEmMovimento(1);
+  // control.getElevador(0)->setSubindo(1);
 
   // usleep(chrono::milliseconds(500));
   while (1) {
-    printelevador0(&controlador);
+    printelevador0(&control);
 
     this_thread::sleep_for(chrono::milliseconds(100));
-  }
 
-  while (1);
+  }
   return 0;
 }
