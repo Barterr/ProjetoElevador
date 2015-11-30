@@ -9,6 +9,22 @@ Andar::Andar() {
   }
 }
 
+void Andar::threadPortas() {
+  while(1){
+    for (int i = 0; i < NUMELEVADORES; i++) {
+      if (flagsAbrirPorta[i]) {
+        portas[i].abrir();
+        flagsAbrirPorta[i] = 0;
+      }
+      else if (flagsFecharPorta[i]) {
+        portas[i].fechar();
+        flagsFecharPorta[i] = 0;
+      }
+    }
+  }
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
+}
+
 /**
  * Retorna a porta do poço de certo elevador, há n portas num andar de n
  *elevadores
@@ -20,6 +36,7 @@ Porta * Andar::getPorta(int idElevador) {
   if (idElevador < NUMELEVADORES) return &portas[idElevador];
   else return NULL;
 }
+
 
 /**
  * Retorna o indicador do andar de certo elevador, há n indicadores num andar de

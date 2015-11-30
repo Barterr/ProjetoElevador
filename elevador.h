@@ -7,6 +7,9 @@ public:
   bool subindo;
   bool descendo;
   bool emMovimento;
+  bool flagParar;
+  bool flagFecharPorta;
+  bool flagAbrirPorta;
   int andar;
   Indicador indicador;
   Porta porta;
@@ -16,18 +19,26 @@ public:
 	Elevador();
 	Elevador(int id);
   void mover();
+  void threadPortas();
   int getAndar();
+  bool getFlagParar();
+  bool getFlagAbrirPorta();
+  bool getFlagFecharPorta();
   bool getSubindo();
   bool getDescendo();
   bool getEmMovimento();
-  void setSubindo(bool i);
-  void setDescendo(bool i);
-  void setEmMovimento(bool i);
+  void setSubindo(bool);
+  void setDescendo(bool);
+  void setEmMovimento(bool);
+  void setFlagParar(bool);
+  void setFlagAbrirPorta(bool);
+  void setFlagFecharPorta(bool);
+
   Porta* getPorta();
   Indicador* getIndicador();
   int getBotoesApertados();
   Botao* getBotaoAbre();
   Botao* getBotaoFecha();
-  Botao* getBotaoPainel(int i);
+  Botao* getBotaoPainel(int);
 };
 #endif

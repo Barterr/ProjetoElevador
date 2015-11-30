@@ -40,6 +40,7 @@ void Porta::setSensor(bool value) {
  * @method Porta::abrir
  */
 void Porta::abrir() {
+  std::this_thread::sleep_for(std::chrono::milliseconds(500));
   aberta = 1;
 }
 
@@ -49,6 +50,7 @@ void Porta::abrir() {
  */
 void Porta::fechar() {
   if (!sensor) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
     aberta = 0;
   }
 }

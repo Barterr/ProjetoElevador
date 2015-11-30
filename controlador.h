@@ -8,20 +8,19 @@ public:
   bool andaresParar[NUMELEVADORES][PISOMAX];
   bool chamadasSubir[PISOMAX];
   bool chamadasDescer[PISOMAX];
-  bool pendencias[NUMELEVADORES];
 
 public:
   Controlador();
   Elevador* getElevador(int id);
   void threadControlador();
-  void atualizaArrays();
+  void atualizarArrays();
   void atualizarChamadas();
   void atualizarPortas();
   void atenderChamadas();
   void atualizarMovimentos();
+  void atualizarIndicadores();
   bool temPendencias(int idElevador);
   int getUltimoDestino(int idElevador);
   int getProximoDestino(int idElevador);
-  void procedimentosFinais();
 };
 #endif
