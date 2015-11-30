@@ -57,20 +57,32 @@ int main() {
 
   thread elev0(control.getElevador(0)->mover, control.getElevador(0));
   thread elev1(control.getElevador(1)->mover, control.getElevador(1));
-  thread portas0(control.getElevador(0)->threadPortas, control.getElevador(0));
-  thread portas1(control.getElevador(1)->threadPortas, control.getElevador(1));
+  thread portasElev0(control.getElevador(0)->threadPortas, control.getElevador(0));
+  thread portasElev1(control.getElevador(1)->threadPortas, control.getElevador(1));
+  // thread portasAndar0(control.andares[0].threadPortas, &control.andares[0]);
+  // thread portasAndar1(control.andares[1].threadPortas, &control.andares[1]);
+  // thread portasAndar2(control.andares[2].threadPortas, &control.andares[2]);
+  // thread portasAndar3(control.andares[3].threadPortas, &control.andares[3]);
+  // thread portasAndar4(control.andares[4].threadPortas, &control.andares[4]);
+  // thread portasAndar5(control.andares[5].threadPortas, &control.andares[5]);
+  // thread portasAndar6(control.andares[6].threadPortas, &control.andares[6]);
+  // thread portasAndar7(control.andares[7].threadPortas, &control.andares[7]);
+  // thread portasAndar8(control.andares[8].threadPortas, &control.andares[8]);
+  // thread portasAndar9(control.andares[9].threadPortas, &control.andares[9]);
+  // thread portasAndar10(control.andares[10].threadPortas, &control.andares[10]);
   thread contThread(control.threadControlador, &control);
+
   // thread printThread(printInfo, &control);
 
   control.getElevador(0)->andar = 4;
   control.getElevador(1)->andar = 5;
-  control.andares[1].getBotaoDescer()->apertar();
-  control.andares[9].getBotaoSubir()->apertar();
+  control.getElevador(1)->getBotaoPainel(1)->apertar();
+  control.getElevador(1)->getBotaoPainel(9)->apertar();
+  control.andares[9].getBotaoDescer()->apertar();
+  control.andares[1].getBotaoSubir()->apertar();
   // control.getElevador(0)->getBotaoPainel(6)->apertar();
-  // control.getElevador(0)->getBotaoPainel(1)->apertar();
   // control.getElevador(0)->getBotaoPainel(2)->apertar();
   // control.getElevador(0)->getBotaoPainel(0)->apertar();
-  // control.getElevador(1)->getBotaoPainel(9)->apertar();
   // control.getElevador(1)->getBotaoPainel(7)->apertar();
   // control.getElevador(1)->getBotaoPainel(2)->apertar();
   // control.getElevador(1)->getBotaoPainel(3)->apertar();

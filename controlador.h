@@ -18,10 +18,9 @@ public:
   void atualizarPortas();
   void atenderChamadas();
   void atualizarMovimentos();
-  void abrirFecharPorta(int idElevador);
+  void atualizarIndicadores();
   bool temPendencias(int idElevador);
   int getUltimoDestino(int idElevador);
   int getProximoDestino(int idElevador);
-  void procedimentosFinais();
 };
 #endif

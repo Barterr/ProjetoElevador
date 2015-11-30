@@ -29,6 +29,7 @@ void Controlador::threadControlador() {
     atualizarArrays();
     atenderChamadas();
     atualizarMovimentos();
+    atualizarIndicadores();
     std::this_thread::sleep_for(std::chrono::milliseconds(5));
   }
 }
@@ -206,6 +207,21 @@ void Controlador::atualizarPortas() {
   }
 }
 
+void Controlador::atualizarIndicadores() {
+  for (int i = 0; i < NUMELEVADORES; i++) {
+    bool subindo = elevadores[i].getSubindo();
+    bool descendo = elevadores[i].getDescendo();
+    int andar = elevadores[i].getAndar();
+
+    elevadores[i].getIndicador()->setDir(subindo?"SUBINDO":(descendo?"DESCENDO":"IDLE"));
+    elevadores[i].getIndicador()->setAndar(andar);
+
+    for (int j = 0; j < PISOMAX; j++) {
+      andares[j].getIndicador(i)->setDir(subindo?"SUBINDO":(descendo?"DESCENDO":"IDLE"));
+      andares[j].getIndicador(i)->setAndar(andar);
+    }
+  }
+}
 
 bool Controlador::temPendencias(int idElevador) {
   bool out = 0;
