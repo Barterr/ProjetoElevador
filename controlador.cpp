@@ -19,14 +19,10 @@ Controlador::Controlador() {
 }
 
 void Controlador::threadControlador() {
-  // for (int i = 0; i < NUMELEVADORES; i++) {
-  //   std::this_thread::sleep_for(std::chrono::milliseconds(500));
-  //   std::thread threadElevador (elevadores[i].mover, &elevadores[i]);
-  // }
   while (1) {
     atualizarPortas();
-    atualizarChamadas();
     atualizarArrays();
+    atualizarChamadas();
     atenderChamadas();
     atualizarMovimentos();
     atualizarIndicadores();
@@ -51,99 +47,67 @@ void Controlador::atualizarArrays() {
 
 void Controlador::atenderChamadas() {
   for (int i = 0; i < PISOMAX; i++) {
-    if (chamadasSubir[i] && !andares[i].getBotaoSubir()->getAtendido()) {
-      int distancia[NUMELEVADORES];
-      int responsavel = -1;
+    int distancia[NUMELEVADORES];
+    int responsavel = 0;
 
+    if (chamadasSubir[i] && !andares[i].getBotaoSubir()->getAtendido()) {
       // calcula as distancias dos elevadores até as chamadas
       for (int j = 0; j < NUMELEVADORES; j++) {
-        if (!elevadores[j].getDescendo()) {
-          int ultimoDestino = getUltimoDestino(j);
-          int andarAtual    = elevadores[j].getAndar();
-          distancia[j] = abs(ultimoDestino - andarAtual) + abs(ultimoDestino - i);
+        int ultimoDestino = getUltimoDestino(j);
+        int andarAtual    = elevadores[j].getAndar();
+        if (!elevadores[j].getDescendo()) { //aka elevador subindo ou parado
+          distancia[j] = abs(andarAtual - i);
         }
         else {
-          distancia[j] = -1;
+          distancia[j] = abs(ultimoDestino - andarAtual) + abs(ultimoDestino - i);
         }
       }
 
-      if (distancia[0] != -1) {
-        responsavel = 0;
-      }
-
-      if (NUMELEVADORES > 1) {
-        for (int j = 1; j < NUMELEVADORES; j++) {
-          if (distancia[j] != -1) {
-            if (distancia[j] < distancia[responsavel]) {
-              responsavel = j;
-            }
-          }
+      for (int j = 0; j < NUMELEVADORES; j++) {
+        if (distancia[j] <= distancia[responsavel]) {
+          responsavel = j;
         }
       }
       andaresParar[responsavel][i] = 1;
       andares[i].getBotaoSubir()->setAtendido(1);
     }
+  }
+  for (int i = 0; i < PISOMAX; i++) {
+    int distancia[NUMELEVADORES];
+    int responsavel = 0;
 
     if (chamadasDescer[i] && !andares[i].getBotaoDescer()->getAtendido()) {
-      int distancia[NUMELEVADORES];
-      int responsavel = -1;
-
       // calcula as distancias dos elevadores até as chamadas
       for (int j = 0; j < NUMELEVADORES; j++) {
-        if (!elevadores[j].getSubindo()) {
-          int ultimoDestino = getUltimoDestino(j);
-          int andarAtual    = elevadores[j].getAndar();
-          distancia[j] = abs(ultimoDestino - andarAtual) + abs(ultimoDestino - i);
+        int ultimoDestino = getUltimoDestino(j);
+        int andarAtual    = elevadores[j].getAndar();
+        if (!elevadores[j].getSubindo()) { //aka elevador descendo ou parado
+          distancia[j] = abs(andarAtual - i);
         }
         else {
-          distancia[j] = -1;
+          distancia[j] = abs(ultimoDestino - andarAtual) + abs(ultimoDestino - i);
         }
       }
-
-      if (distancia[0] != -1) {
-        responsavel = 0;
-      }
-
-      if (NUMELEVADORES > 1) {
-        for (int j = 1; j < NUMELEVADORES; j++) {
-          if (distancia[j] != -1) {
-            if (distancia[j] < distancia[responsavel]) {
-              responsavel = j;
-            }
-          }
+      for (int j = 0; j < NUMELEVADORES; j++) {
+        if (distancia[j] < distancia[responsavel]) {
+          responsavel = j;
         }
       }
-
       andaresParar[responsavel][i] = 1;
       andares[i].getBotaoDescer()->setAtendido(1);
-
-      // std::cout << andaresParar[responsavel][i] << std::endl;
     }
   }
 }
 
 void Controlador::atualizarChamadas() {
   for (int i = 0; i < PISOMAX; i++) {
-    if (!andares[i].getBotaoSubir()->getAtendido()) {
-      chamadasSubir[i]  = andares[i].getBotaoSubir()->estaPressionado();
+    chamadasSubir[i] = 0;
+    chamadasDescer[i] = 0;
+    if (!andares[i].getBotaoSubir()->getAtendido() && andares[i].getBotaoSubir()->estaPressionado()) {
+      chamadasSubir[i]  = 1;
     }
-    if (!andares[i].getBotaoDescer()->getAtendido()) {
-      chamadasDescer[i] = andares[i].getBotaoDescer()->estaPressionado();
-    }
-
-    if (chamadasSubir[i] || chamadasDescer[i]) {
-      for (int j = 0; j < NUMELEVADORES; j++) {
-        if (elevadores[j].getSubindo()
-            && (andaresParar[j][i] == 1)
-            && (elevadores[j].getAndar() < i)) {
-          chamadasSubir[i] = 0;
-        }
-        else if (elevadores[j].getDescendo()
-                 && (andaresParar[j][i] == 1)
-                 && (elevadores[j].getAndar() > i)) {
-          chamadasDescer[i] = 0;
-        }
-      }
+    if (!andares[i].getBotaoDescer()->getAtendido() && andares[i].getBotaoDescer()->estaPressionado()) {
+      chamadasDescer[i] = 1;
     }
   }
 }

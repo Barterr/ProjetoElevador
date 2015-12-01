@@ -3,6 +3,9 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <bitset>
 #include <cmath>
 #include "botao.cpp"
@@ -55,16 +58,28 @@ void printInfo(Controlador *controlador) {
 int main() {
   Controlador control;
 
-  thread elev0(control.getElevador(0)->mover, control.getElevador(0));
-  thread elev1(control.getElevador(1)->mover, control.getElevador(1));
-  thread portasElev0(control.getElevador(0)->threadPortas, control.getElevador(0));
-  thread portasElev1(control.getElevador(1)->threadPortas, control.getElevador(1));
-  thread contThread(control.threadControlador, &control);
+  thread elev0(&control.getElevador(0)->Elevador::mover, control.getElevador(0));
+  thread elev1(&control.getElevador(1)->Elevador::mover, control.getElevador(1));
+  thread portasElev0(&control.getElevador(0)->Elevador::threadPortas, control.getElevador(0));
+  thread portasElev1(&control.getElevador(1)->Elevador::threadPortas, control.getElevador(1));
+  thread contThread(&control.Controlador::threadControlador, &control);
+
+  // pthread_t contThread;
+  // pthread_create(&contThread, NULL, control.Controlador::threadControlador, NULL);
 
   // thread printThread(printInfo, &control);
 
-  control.getElevador(0)->andar = 3;
-  control.getElevador(1)->andar = 5;
+  control.getElevador(0)->andar = 5;
+  control.getElevador(1)->andar = 4;
+  // control.andares[1].getBotaoDescer()->apertar();
+  // control.andares[1].getBotaoSubir()->apertar();
+  // control.andares[4].getBotaoDescer()->apertar();
+  // control.andares[6].getBotaoDescer()->apertar();
+  // control.andares[8].getBotaoDescer()->apertar();
+  // control.andares[10].getBotaoDescer()->apertar();
+  // control.andares[7].getBotaoSubir()->apertar();
+  // control.andares[8].getBotaoSubir()->apertar();
+  // control.andares[9].getBotaoDescer()->apertar();
   control.getElevador(0)->getBotaoPainel(0)->apertar();
   control.getElevador(0)->getBotaoPainel(2)->apertar();
   control.getElevador(0)->getBotaoPainel(3)->apertar();
